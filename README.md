@@ -96,6 +96,7 @@ flowchart LR
   CACHE --> API
 
   API --> UI
+```
 
 📁 Project Structure
 ```
