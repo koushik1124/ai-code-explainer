@@ -1,0 +1,56 @@
+===============================================================================
+BIG-O NOTATION CHEAT SHEET (Python Focus)
+===============================================================================
+
+I. CORE DEFINITIONS
+-------------------------------------------------------------------------------
+Big-O notation describes how runtime or space requirements grow as input (n) 
+increases. It focuses on the "worst-case" scenario and ignores constants.
+
+O(1)     : Constant Time     - Roughly same time regardless of size.
+O(log n) : Logarithmic Time  - Grows slowly; common in Divide & Conquer.
+O(n)     : Linear Time       - Grows proportionally with input size.
+O(n log n): Linearithmic Time - Common in efficient comparison sorting.
+O(n^2)   : Quadratic Time    - Scales poorly; common in nested loops.
+
+
+II. COMMON SEARCH & SORTING
+-------------------------------------------------------------------------------
+* SEARCHING:
+  - Linear Search (Unsorted Data): O(n)
+  - Binary Search (Sorted Data)  : O(log n)
+
+* SORTING:
+  - Timsort (Python's .sort()): O(n log n)
+  - Efficient Sorts (Merge/Quick): O(n log n)
+  - Naive Sorts (Bubble/Insertion): O(n^2)
+  - Specialized (Counting/Radix): Can be faster than O(n log n) 
+
+
+III. PYTHON LISTS (Arrays)
+-------------------------------------------------------------------------------
+* Access / Assignment [i] : O(1)
+* Appending to end         : O(1) (Amortized)
+* Insert/Delete in middle  : O(n) (Requires shifting elements)
+* Membership check (x in L): O(n) (Scans linearly)
+* Slicing [i:j] (length k) : O(k) (Creates a new list)
+
+
+IV. PYTHON DICTIONARIES & SETS (Hash Tables)
+-------------------------------------------------------------------------------
+* Lookup / Access          : O(1) (Average case)
+* Insertion / Deletion     : O(1) (Average case)
+* Membership (x in D/S)    : O(1) (Average case)
+* Iterating over entries   : O(n)
+* Set Union/Intersection   : O(len(s) + len(t))
+* Worst Case (Collisions)  : O(n) (Rare)
+
+
+V. BEST PRACTICES & TIPS
+-------------------------------------------------------------------------------
+1. PREFER DICTS/SETS: Use for frequent lookups or membership checks.
+2. PREFER LISTS: Use for ordered sequences modified mainly at the end.
+3. PREPROCESS: Convert lists to sets/maps if performing repeated searches.
+4. BE PRACTICAL: Theoretical complexity matters most for large 'n'. 
+   For small data, O(n^2) is often perfectly acceptable and simpler.
+===============================================================================

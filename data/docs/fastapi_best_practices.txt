@@ -1,0 +1,74 @@
+Define request and response bodies as Pydantic models to keep schemas explicit and validated.
+​
+
+Separate input (request) models from output (response) models, even if they look similar, to avoid leaking internal fields.
+​
+
+Use response_model= on route decorators so FastAPI can filter and document output automatically.
+​
+
+Favor explicit models over loose dict payloads to benefit from editor autocompletion and clear contracts.
+​
+
+Always return appropriate HTTP status codes that match the operation semantics (e.g. 200, 201, 204).
+​
+
+Use status_code= in route decorators instead of hardcoding numeric literals throughout handlers.
+​
+
+For validation errors, FastAPI returns 422 by default; for custom domain errors, raise HTTPException with suitable codes.
+​
+
+Keep error status codes consistent across routers so clients can rely on predictable behavior.
+​
+
+Use dependency injection (Depends) for shared concerns such as database sessions, configuration, and authentication.
+​
+
+Keep route functions thin; push business logic into services that are provided via dependencies.
+​
+
+Prefer smaller, composable dependencies rather than monolithic ones that know about everything in the application.
+​
+
+Use dependency overrides in tests to replace real implementations with fakes or mocks cleanly.
+​
+
+Use Pydantic field types and validators to enforce constraints on incoming data (lengths, formats, ranges).
+​
+
+Let FastAPI’s automatic validation handle most type errors and missing fields through annotated models.
+​
+
+For complex business rules that require database checks, use dependencies or service functions instead of massive model validators.
+​
+
+Return structured error payloads with clear detail messages so clients understand why validation failed.
+​
+
+Implement centralized error handlers with @app.exception_handler for common exception types.
+​
+
+Map domain-specific exceptions to consistent HTTP responses with helpful error structures.
+​
+
+Avoid returning raw tracebacks to clients; log them on the server side and expose only safe error messages.
+​
+
+Use custom exception classes to represent frequent domain errors and wire them to handlers once.
+​
+
+Organize routes into multiple router modules (e.g. users.py, items.py) and include them in the main app.
+​
+
+Place business logic in service or use-case layers, not directly in route functions, to keep handlers thin.
+​
+
+Keep Pydantic schemas in a dedicated schemas or models package separate from ORM models when possible.
+​
+
+Group dependencies, configuration, and startup/shutdown events in their own modules to avoid circular imports.
+​
+
+For larger projects, adopt a layered structure like api/, services/, repositories/, and core/ for clarity.
+​

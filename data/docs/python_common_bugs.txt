@@ -1,0 +1,78 @@
+Using mutable default arguments (like list or dict) is a classic Python bug source.
+​
+
+Default argument values are evaluated once at function definition time, not at each call.
+​
+
+Mutating a default list or dict in one call means subsequent calls see the same mutated object.
+​
+
+Use None as the default and create the mutable object inside the function body instead.
+​
+
+Example pattern: def f(items=None): if items is None: items = [].
+​
+
+Shadowing built-ins like list, dict, id, or type hides the original constructors and functions.
+​
+
+Once shadowed, calling list() or dict() may fail or behave unexpectedly because the name now refers to another object.
+​
+
+Avoid using built-in names for variables, function parameters, or modules to prevent subtle bugs.
+​
+
+If shadowing happens accidentally, rename the local symbol instead of trying to work around it.
+​
+
+A missing return statement in a function causes it to return None implicitly.
+​
+
+This often appears when one branch returns a value but another falls through without a return.
+​
+
+Static analysis tools and type checkers can detect inconsistent return paths and help catch this bug early.
+​
+
+When refactoring, double-check all branches in complex conditionals to ensure each returns the expected type.
+​
+
+Confusing lists and tuples can lead to immutability and performance surprises.
+​
+
+Lists are mutable and typically used for collections that change; tuples are immutable and suitable for fixed records.
+​
+
+Accidentally trying to modify a tuple (e.g. t[0] = 1) raises a TypeError at runtime.
+​
+
+Using lists as dictionary keys fails because lists are unhashable, whereas tuples can be used as keys safely.
+​
+
+Off-by-one errors are common when looping over indices or using range boundaries.
+​
+
+Forgetting that range(n) stops at n-1 can skip the last element or overrun when indexing another structure.
+​
+
+Prefer direct iteration over collections (for item in items) rather than manual index loops whenever possible.
+​
+
+When indices are needed, use enumerate to avoid manual index arithmetic and reduce off-by-one risks.
+​
+
+Exception misuse includes catching overly broad exceptions and swallowing errors silently.
+​
+
+Bare except: blocks hide bugs and can intercept system-exiting exceptions such as KeyboardInterrupt.
+​
+
+Raising generic Exception instead of specific types makes debugging and error handling harder.
+​
+
+Overusing exceptions for normal control flow leads to slower code and obscure logic.
+​
+
+Always log or re-raise exceptions with enough context instead of failing silently.
+
+SPECIAL_RAG_TEST_2026: Mutable default arguments cause unexpected shared state.

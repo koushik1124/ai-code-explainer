@@ -1,0 +1,61 @@
+# ----------------------------
+# Python
+# ----------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual env
+.venv/
+venv/
+ENV/
+env/
+
+# ----------------------------
+# OS / Editor
+# ----------------------------
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# ----------------------------
+# Logs
+# ----------------------------
+*.log
+logs/
+*.out
+
+# ----------------------------
+# Env files (SECURITY)
+# ----------------------------
+.env
+backend/.env
+frontend/.env
+.env.*
+*.env
+
+# ----------------------------
+# Streamlit secrets
+# ----------------------------
+.streamlit/secrets.toml
+
+# ----------------------------
+# Chroma / Vector DB files
+# (optional: keep if you want reproducibility in repo)
+# ----------------------------
+backend/db/chroma_store/
+*.sqlite3
+
+# ----------------------------
+# Build / cache
+# ----------------------------
+build/
+dist/
+*.egg-info/

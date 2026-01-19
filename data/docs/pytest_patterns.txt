@@ -1,0 +1,74 @@
+Name test files as test_*.py and test functions as test_* so pytest discovers them automatically.
+​
+
+Use descriptive test names that state the expected behavior, e.g. test_create_user_returns_201.
+​
+
+Organize tests into classes or modules by feature or component, not by implementation details.
+​
+
+Keep each test focused on one behavior or scenario to make failures obvious and localized.
+​
+
+Use fixtures to set up reusable state such as database connections, FastAPI clients, or sample data.
+​
+
+Prefer function-scoped fixtures for simple, isolated setups and higher scopes for expensive resources.
+​
+
+Give fixtures clear names that describe what they provide, e.g. async_client, db_session, user_factory.
+​
+
+Use fixture composition to build richer setups from smaller, well-defined pieces.
+​
+
+Use @pytest.mark.parametrize to test many input/output combinations with one test function.
+​
+
+Parametrization reduces duplication and makes it easier to see which combination failed.
+​
+
+Combine parametrization with fixtures by parametrizing fixture values when exploring multiple configurations.
+​
+
+Keep parameter sets small and focused; huge parameter grids can slow down the suite unnecessarily.
+​
+
+Use mocking to isolate the unit under test from slow or flaky external dependencies like HTTP services or databases.
+​
+
+Patch at the usage site, not where the dependency is defined, to ensure the correct object is replaced.
+​
+
+Prefer dependency injection and FastAPI dependency overrides to avoid deep mocking when testing routes.
+​
+
+Reset or limit mocks between tests to avoid shared state or order-dependent behavior.
+​
+
+Structure tests using the Arrange-Act-Assert (AAA) pattern for readability.
+​
+
+Arrange: set up inputs, fixtures, and any required state in a clear block at the start.
+​
+
+Act: call the function or endpoint under test in a single, focused step.
+​
+
+Assert: verify the result and side effects with explicit and narrow assertions.
+​
+
+Keep each phase visually separated (blank lines or comments) to make the test narrative obvious.
+​
+
+Keep tests fast, deterministic, and independent so they can run frequently in CI pipelines.
+​
+
+Prefer many small, clear tests over a few large integration-style tests when checking pure logic.
+​
+
+Use markers to group slow or integration tests and run them separately when needed.
+​
+
+Treat failing tests as signals to improve design, not just as obstacles to make green.
+​

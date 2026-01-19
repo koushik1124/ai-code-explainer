@@ -1,0 +1,80 @@
+Use snake_case for function and variable names, and choose descriptive words over abbreviations.
+​
+Use CamelCase for class names and keep module/file names short and lowercase.
+​
+Reserve ALL_CAPS snake_case for constants that should not change at runtime.
+​
+Avoid single-letter names except for very short-lived variables such as loop indices i, j, k.
+​
+Prefer names that describe purpose instead of implementation details, e.g. calculate_total_price instead of calc.
+​
+Group related functions into modules and classes so each unit has a clear, single responsibility.
+​
+Each function should do one thing and do it well, following a single-responsibility mindset.
+​
+If a function needs comments to explain many branches, consider splitting it into smaller helpers.
+​
+Keep function parameter lists small; pass a config/dataclass object if the list is growing out of control.
+​
+Avoid hidden work in accessors; getters/setters should not perform heavy computations or I/O.
+​
+Extract reusable logic from long scripts into pure functions that are easy to test and reuse.
+​
+Avoid global variables because they create implicit coupling and make reasoning and testing harder.
+​
+Prefer passing data explicitly through function arguments instead of reading and mutating module-level state.
+​
+If shared state is required, encapsulate it in a class instance or dedicated state object rather than bare globals.
+​
+Use configuration files, environment variables, or dependency injection instead of hardcoding settings as globals.
+​
+Treat error handling as part of the main logic instead of an afterthought.
+​
+Raise the most specific built-in exception type that matches the error condition (e.g. ValueError, TypeError).
+​
+Avoid bare except: clauses; always catch specific exceptions or at least Exception with a clear reason.
+​
+Never use exceptions for normal control flow where simple conditionals or return values would suffice.
+​
+Log exceptions with enough context (inputs, identifiers) before re-raising or returning an error response.
+​
+Close resources using context managers (with blocks) so exceptions do not leak open files or connections.
+​
+Keep an eye on time complexity when working with large inputs or hot paths in the code.
+​
+Remember that common sorting algorithms in Python’s sorted() are 
+O(nlogn)
+O(nlogn) on average.
+​
+
+Indexing into lists and tuples is 
+O(1)
+O(1), but inserting/removing in the middle of a list is 
+O(n)
+O(n).
+​
+
+Most dictionary and set lookups are expected 
+O(1)
+O(1), but can degrade in pathological cases.
+​
+
+Use sets or dictionaries for membership checks instead of lists when x in collection is performance critical.
+​
+
+Avoid unnecessary nested loops; consider precomputing maps or using better data structures to reduce complexity.
+​
+
+Keep functions short enough to fit on one screen so the reader can understand them without scrolling.
+​
+
+Follow PEP 8 spacing and line-length rules (4-space indents, ~79-character lines) to keep layout consistent.
+​
+
+Remove dead code, commented-out blocks, and unused imports regularly to reduce noise.
+​
+
+Prefer clear code over clever tricks or micro-optimizations unless profiling proves a real bottleneck.
+​
+
+Write tests around critical logic; clean code includes a safety net that allows safe refactoring.
